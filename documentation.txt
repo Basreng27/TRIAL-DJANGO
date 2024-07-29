@@ -171,3 +171,5 @@
             return render(request, 'home.html')
     => Tambahkan Setting di learnDjango/settings.py Pada TEMPLATES Untuk Mengarahkan Secara Default
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
+
+=> Koneksi Ke database
