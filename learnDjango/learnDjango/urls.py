@@ -17,12 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.http import HttpResponse
+from firstapp import views
 
-def home_view(request):
-    return HttpResponse("Selamat datang di halaman utama!")
+# def home_view(request):
+#     return HttpResponse("Selamat datang di halaman utama!")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('test/', include('firstapp.urls')),
-    path('', home_view)
+    path('', views.home, name='home')
+    # path('', home_view)
 ]

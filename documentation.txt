@@ -158,3 +158,16 @@
             return HttpResponse("Ini Test Ke 2")
     => Untuk Akses 
         http://127.0.0.1:8000/test/test2
+
+=> Membuat View
+    => Buat Template Di Folder templastes
+        base.html
+        home.html
+    => Buat Url di learnDjango Yang Mengarah Ke View
+        from firstapp import views
+        path('', views.home, name='home')
+    => Buat Function Yang Mengarahkan home Di firstapp/views.py
+        def home(request):
+            return render(request, 'home.html')
+    => Tambahkan Setting di learnDjango/settings.py Pada TEMPLATES Untuk Mengarahkan Secara Default
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
