@@ -77,8 +77,16 @@ WSGI_APPLICATION = 'learnDjango.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'sql_server.pyodbc',
+        'NAME': 'BikeStore',  # Ganti dengan nama database Anda
+        # 'USER': 'your_username',        # Ganti dengan username Anda
+        # 'PASSWORD': 'your_password',    # Ganti dengan password Anda
+        'HOST': 'localhost\MSSQLSERVER01',  # Ganti dengan alamat server SQL Server Anda
+        'PORT': '',                     # Biasanya dikosongkan atau diisi jika diperlukan
+        'OPTIONS': {
+            'driver': 'ODBC Driver 17 for SQL Server',  # Ganti jika Anda menggunakan driver yang berbeda
+            'extra_params': 'TrustServerCertificate=yes;Integrated Security=SSPI;'
+        },
     }
 }
 

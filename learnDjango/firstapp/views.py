@@ -16,3 +16,27 @@ def test_two(request):
 
 def home(request):
     return render(request, 'home.html')
+
+# form
+def create(request):
+    return render(request, 'create.html')
+
+from .form import MyForm
+from .models import Users
+
+def submit_form(request):
+    if request.method == 'POST':
+        form = MyForm(request.POST)
+
+        if form.is_valid():
+            # Ambil Datanya
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+
+            Users.objects.create(name=name, email=email)
+
+            return render(request, 'create.html', {'message':'success'})
+    else:
+        form = MyForm()
+
+    return render(request, 'form.html', {'message':'Failed', 'form': form})
